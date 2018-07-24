@@ -5,6 +5,8 @@ import com.example.demo.service.employeesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class employeesController {
      @Autowired
@@ -12,9 +14,10 @@ public class employeesController {
 
 
      @GetMapping("/employees")
-    public  String  getEmployeesList(){
+    public  List<employees>  getEmployeesList(){
+        List<employees>list= emplService.getEmployeesList();
 
-         return null;
+        return list;
      }
 
      @GetMapping("/employees/{id}")
