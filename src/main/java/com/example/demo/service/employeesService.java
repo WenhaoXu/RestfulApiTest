@@ -59,4 +59,16 @@ public class employeesService {
         return  null;
 
     }
+
+    public employees updateEmployees(int id, employees  e) {
+        List<employees>  list=  dbService.getEmployeesList();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).id==id){
+                list.remove(i);
+                list.add(e);
+                return e;
+            }
+        }
+        return  null;
+    }
 }

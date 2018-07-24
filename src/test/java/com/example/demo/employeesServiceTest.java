@@ -82,4 +82,15 @@ public  class employeesServiceTest {
         employees employees= employeesService.deleteEmployees(1);
         Assertions.assertThat(employees).isEqualTo(null);
     }
+
+    @Test
+    public void should_Return_Employees_When_updateEmployees(){
+        DBService dbService= Mockito.mock( DBService.class);
+        employeesService employeesService=new employeesService(dbService);
+        List<employees> list=new LinkedList<>();
+        employees employees1=new employees();
+        Mockito.when(dbService.getEmployeesList()).thenReturn(list);
+        employees employees= employeesService.updateEmployees(1,employees1);
+        Assertions.assertThat(employees).isEqualTo(null);
+    }
 }
