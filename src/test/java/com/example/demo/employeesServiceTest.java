@@ -93,4 +93,15 @@ public  class employeesServiceTest {
         employees employees= employeesService.updateEmployees(1,employees1);
         Assertions.assertThat(employees).isEqualTo(null);
     }
+
+    @Test
+    public void should_Return_EmployeesList_When_getEmployeesByPage(){
+        DBService dbService= Mockito.mock( DBService.class);
+        employeesService employeesService=new employeesService(dbService);
+        List<employees> list=new LinkedList<>();
+        employees employees1=new employees();
+        Mockito.when(dbService.getEmployeesList()).thenReturn(list);
+        List<employees> mewlist= employeesService.getEmployeesByPage(1,2);
+        Assertions.assertThat(mewlist).isEqualTo(null);
+    }
 }

@@ -33,7 +33,7 @@ public class employeesController {
 
     @GetMapping("/employees/page/{page}/pageSize/{pageSize}")
     public String getEmployeesByPage(@PathVariable int page,@PathVariable int pageSize){
-
+          List<employees> employees =emplService.getEmployeesByPage(page,pageSize);
          return null;
     }
 

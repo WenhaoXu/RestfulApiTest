@@ -5,6 +5,7 @@ import com.example.demo.model.employees;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,5 +71,25 @@ public class employeesService {
             }
         }
         return  null;
+    }
+
+    public List<employees> getEmployeesByPage(int page, int pageSize) {
+        List<employees>  list=  dbService.getEmployeesList();
+        List<employees>newlist=new LinkedList<>();
+        int  pages=0;
+        if(list.size()%pageSize!=0)
+        {  pages=list.size()/pageSize+1; }
+        else {
+            pages=list.size()/pageSize;
+        }
+        if(pages<page){
+            return null;
+        }
+        else{
+            for(int i=(page-1)*5;i<=pageSize&&i<page*5;i++){
+                newlist.add(list.get(i));
+            }
+            return  newlist;
+        }
     }
 }
