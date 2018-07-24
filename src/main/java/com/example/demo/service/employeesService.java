@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class employeesService {
@@ -26,4 +27,14 @@ public class employeesService {
         return empl;
     }
 
+    public employees getEmployeesById(int id) {
+        List<employees>  dblist=  dbService.getEmployeesList();
+       List<employees>newlist= dblist.stream().filter(x->x.id==id).collect(Collectors.toList());
+       if(newlist.size()==0){
+           return  null;
+       }
+       else {
+           return  newlist.get(0);
+       }
+    }
 }

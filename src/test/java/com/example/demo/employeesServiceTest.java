@@ -52,5 +52,13 @@ public  class employeesServiceTest {
         Assertions.assertThat(employees).isEqualTo(employees1);
     }
 
-
+    @Test
+    public void should_Return_Employees_When_getEmployeesByID(){
+        DBService dbService= Mockito.mock( DBService.class);
+        employeesService employeesService=new employeesService(dbService);
+        List<employees> list=new LinkedList<>();
+        Mockito.when(dbService.getEmployeesList()).thenReturn(list);
+        employees employees= employeesService.getEmployeesById(1);
+        Assertions.assertThat(employees).isEqualTo(null);
+    }
 }
