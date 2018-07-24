@@ -69,9 +69,9 @@ public class companyService {
             if(list.get(i).id==id){
                 list.remove(i);
                 list.add(company);
-                for(int j=0;i<list2.size();j++){
-                    if(list2.get(i).getCompany().id==id){
-                        list2.get(i).setCompany(company);
+                for(int j=0;j<list2.size();j++){
+                    if(list2.get(j).getCompany().id==id){
+                        list2.get(j).setCompany(company);
                     }
                 }
                 return company;
@@ -83,10 +83,20 @@ public class companyService {
     }
 
     public company deleteCompany(int id) {
-
-
-
-
+        List<company>  list=  dbService.getCompanyList();
+        List<employees>  list2=  dbService.getEmployeesList();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).id==id){
+             company company=   list.remove(i);
+                for(int j=0;j<list2.size();j++){
+                    if(list2.get(j).getCompany().id==id){
+                        list2.remove(j);
+                    }
+                }
+                return company;
+            }
+        }
         return  null;
+
     }
 }

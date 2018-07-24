@@ -57,7 +57,6 @@ public class companyServiceTest {
         companyService companyService=new companyService(dbService);
         List<company> list=new LinkedList<>();
         company company=new company();
-//        list.add(company);
         Mockito.when(dbService.getCompanyList()).thenReturn(list);
         company company1= companyService.addCompany(company);
         Assertions.assertThat(company1).isEqualTo(company);
@@ -69,7 +68,17 @@ public class companyServiceTest {
         companyService companyService=new companyService(dbService);
         List<company> list=new LinkedList<>();
         company company=new company();
-//        list.add(company);
+        Mockito.when(dbService.getCompanyList()).thenReturn(list);
+        company company1= companyService.updateCompanies(1,company);
+        Assertions.assertThat(company1).isEqualTo(null);
+    }
+
+    @Test
+    public void should_Return_Employees_When_deleteEmployees(){
+        DBService dbService= Mockito.mock( DBService.class);
+        companyService companyService=new companyService(dbService);
+        List<company> list=new LinkedList<>();
+        company company=new company();
         Mockito.when(dbService.getCompanyList()).thenReturn(list);
         company company1= companyService.deleteCompany(1);
         Assertions.assertThat(company1).isEqualTo(null);
