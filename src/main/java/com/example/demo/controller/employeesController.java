@@ -16,14 +16,13 @@ public class employeesController {
      @GetMapping("/employees")
     public  List<employees>  getEmployeesList(){
         List<employees>list= emplService.getEmployeesList();
-
         return list;
      }
 
      @GetMapping("/employees/{id}")
-    public String getEmployeesById(@PathVariable int id){
-
-         return  null;
+    public employees getEmployeesById(@PathVariable int id){
+          employees employees=emplService.getEmployeesById(id);
+         return  employees;
      }
 
      @GetMapping("/employees/male")
@@ -39,9 +38,9 @@ public class employeesController {
     }
 
     @PostMapping("/employees")
-    public  String addEmployees(@RequestBody employees empl){
-
-         return  null;
+    public  employees addEmployees(@RequestBody employees empl){
+            employees   employees= emplService.addEmployees(empl);
+         return  employees;
     }
 
     @PutMapping("/employees/{id}")

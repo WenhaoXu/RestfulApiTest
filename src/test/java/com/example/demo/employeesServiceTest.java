@@ -18,7 +18,7 @@ import java.util.List;
 
 
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 public  class employeesServiceTest {
 
@@ -39,4 +39,18 @@ public  class employeesServiceTest {
         List<employees> list1= employeesService.getEmployeesList();
         Assertions.assertThat(list1.size()).isEqualTo(1);
     }
+
+    @Test
+    public void should_Return_Employees_When_addEmployees(){
+        DBService dbService= Mockito.mock( DBService.class);
+        employeesService employeesService=new employeesService(dbService);
+        List<employees> list=new LinkedList<>();
+        employees employees1=new employees();
+        Mockito.when(dbService.getEmployeesList()).thenReturn(list);
+//        Mockito.when(dbService.getEmployeesList()).thenReturn(list);
+       employees employees= employeesService.addEmployees(employees1);
+        Assertions.assertThat(employees).isEqualTo(employees1);
+    }
+
+
 }

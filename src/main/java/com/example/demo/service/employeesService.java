@@ -17,9 +17,13 @@ public class employeesService {
 
     public List<employees> getEmployeesList(){
         List<employees>  dblist=  dbService.getEmployeesList();
-
-
         return   dblist;
     };
+
+    public employees addEmployees(employees empl) {
+        List<employees>  dblist=  dbService.getEmployeesList();
+        dblist.add(empl);
+        return empl;
+    }
 
 }
