@@ -4,6 +4,7 @@ import com.example.demo.DBService;
 import com.example.demo.model.company;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,5 +30,27 @@ public class companyService {
         else {
             return  newlist.get(0);
         }
+    }
+
+    public List<company> getCompaniesByPage(int page, int pageSize) {
+        List<company>  list=  dbService.getCompanyList();
+        List<company>newlist=new LinkedList<>();
+        int  pages=0;
+        if(list.size()%pageSize!=0)
+        {  pages=list.size()/pageSize+1; }
+        else {
+            pages=list.size()/pageSize;
+        }
+        if(pages<page){
+            return null;
+        }
+        else{
+            for(int i=(page-1)*pageSize;i<=pageSize&&i<page*pageSize;i++){
+                newlist.add(list.get(i));
+            }
+            return  newlist;
+        }
+
+
     }
 }

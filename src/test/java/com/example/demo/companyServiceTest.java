@@ -37,4 +37,16 @@ public class companyServiceTest {
         company company1= companyService.getCompaniesById(1);
         Assertions.assertThat(company1).isEqualTo(null);
     }
+
+    @Test
+    public void should_Return_EmployeesList_When_getEmployeesByPage(){
+        DBService dbService= Mockito.mock( DBService.class);
+        companyService companyService=new companyService(dbService);
+        List<company> list=new LinkedList<>();
+        company company=new company();
+//        list.add(company);
+        Mockito.when(dbService.getCompanyList()).thenReturn(list);
+        List<company> list1= companyService.getCompaniesByPage(1,1);
+        Assertions.assertThat(list1).isEqualTo(null);
+    }
 }

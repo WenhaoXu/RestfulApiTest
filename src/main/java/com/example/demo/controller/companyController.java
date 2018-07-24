@@ -27,8 +27,8 @@ public class companyController {
 
     @GetMapping("/companies/page/{page}/pageSize/{pageSize}")
     public List<company> getEmployeesByPage(@PathVariable int page, @PathVariable int pageSize){
-
-        return null;
+        List<company> companies=companyService.getCompaniesByPage(page,pageSize);
+        return companies;
     }
 
     @PostMapping("/companies")
