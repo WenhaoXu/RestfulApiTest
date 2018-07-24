@@ -33,8 +33,8 @@ public class companyController {
 
     @PostMapping("/companies")
     public  company addCompany(@RequestBody company company){
-
-        return  null;
+         company company1=companyService.addCompany(company);
+        return  company1;
     }
 
     @PutMapping("/companies/{id}")

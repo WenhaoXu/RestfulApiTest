@@ -50,7 +50,15 @@ public class companyService {
             }
             return  newlist;
         }
+    }
 
+
+    public company addCompany(company company) {
+        List<company>  list=  dbService.getCompanyList();
+        list.add(company);
+        return company;
 
     }
+
+
 }
