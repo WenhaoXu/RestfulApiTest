@@ -48,4 +48,15 @@ public class employeesService {
             return  newlist;
         }
     }
+
+    public employees deleteEmployees(int id) {
+        List<employees>  dblist=  dbService.getEmployeesList();
+        for(int i=0;i<dblist.size();i++){
+            if(dblist.get(i).id==id){
+                return  dblist.remove(i);
+            }
+        }
+        return  null;
+
+    }
 }

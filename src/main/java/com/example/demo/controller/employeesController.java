@@ -44,15 +44,15 @@ public class employeesController {
     }
 
     @PutMapping("/employees/{id}")
-    public String updateEmployees(@PathVariable int id){
-
+    public employees updateEmployees(@PathVariable int id){
+         employees employees=emplService.updateEmployees()
          return  null;
     }
 
     @DeleteMapping ("/employees/{id}")
-    public String deleteEmployees(@PathVariable int id){
-
-        return  null;
+    public employees deleteEmployees(@PathVariable int id){
+        employees employees =emplService.deleteEmployees(id);
+        return  employees;
     }
 
 }
