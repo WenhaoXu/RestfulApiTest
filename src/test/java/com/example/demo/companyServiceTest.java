@@ -62,4 +62,16 @@ public class companyServiceTest {
         company company1= companyService.addCompany(company);
         Assertions.assertThat(company1).isEqualTo(company);
     }
+
+    @Test
+    public void should_Return_Employees_When_updateEmployees(){
+        DBService dbService= Mockito.mock( DBService.class);
+        companyService companyService=new companyService(dbService);
+        List<company> list=new LinkedList<>();
+        company company=new company();
+//        list.add(company);
+        Mockito.when(dbService.getCompanyList()).thenReturn(list);
+        company company1= companyService.deleteCompany(1);
+        Assertions.assertThat(company1).isEqualTo(null);
+    }
 }

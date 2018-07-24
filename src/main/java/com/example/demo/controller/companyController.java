@@ -38,14 +38,14 @@ public class companyController {
     }
 
     @PutMapping("/companies/{id}")
-    public  company updateCompanies(@PathVariable int id){
-
-        return null;
+    public  company updateCompanies(@PathVariable int id,@RequestBody company company){
+          company  company2 =companyService.updateCompanies(id, company);
+        return company2;
     }
 
     @DeleteMapping("/companies/{id}")
     public company deleteCompany(@PathVariable int id){
-
-        return null;
+        company company=companyService.deleteCompany(id);
+        return company;
     }
 }
