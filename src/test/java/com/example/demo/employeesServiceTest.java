@@ -23,11 +23,6 @@ import java.util.List;
 public  class employeesServiceTest {
 
 
-//        @Before
-//        public void setUp(){
-
-//    }
-
     @Test
     public void should_Return_EmployeesList_When_getEmployees(){
         DBService dbService= Mockito.mock( DBService.class);

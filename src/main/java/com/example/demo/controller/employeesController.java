@@ -26,15 +26,15 @@ public class employeesController {
      }
 
      @GetMapping("/employees/male")
-    public String getEmployeesByMale(){
+    public List<employees> getEmployeesByMale(){
          List<employees> list =emplService.getEmployeesByMale("boy");
-         return null;
+         return list;
     }
 
     @GetMapping("/employees/page/{page}/pageSize/{pageSize}")
-    public String getEmployeesByPage(@PathVariable int page,@PathVariable int pageSize){
+    public List<employees> getEmployeesByPage(@PathVariable int page,@PathVariable int pageSize){
           List<employees> employees =emplService.getEmployeesByPage(page,pageSize);
-         return null;
+         return employees;
     }
 
     @PostMapping("/employees")

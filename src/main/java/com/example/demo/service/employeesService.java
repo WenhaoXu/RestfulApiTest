@@ -41,7 +41,7 @@ public class employeesService {
 
     public List<employees> getEmployeesByMale(String boy) {
         List<employees>  dblist=  dbService.getEmployeesList();
-        List<employees>newlist= dblist.stream().filter(x->x.sex==boy).collect(Collectors.toList());
+        List<employees>newlist= dblist.stream().filter(x->x.sex.equals(boy)).collect(Collectors.toList());
         if(newlist.size()==0){
             return  null;
         }
@@ -86,7 +86,7 @@ public class employeesService {
             return null;
         }
         else{
-            for(int i=(page-1)*5;i<=pageSize&&i<page*5;i++){
+            for(int i=(page-1)*pageSize;i<=pageSize&&i<page*pageSize;i++){
                 newlist.add(list.get(i));
             }
             return  newlist;
