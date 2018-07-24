@@ -37,4 +37,15 @@ public class employeesService {
            return  newlist.get(0);
        }
     }
+
+    public List<employees> getEmployeesByMale(String boy) {
+        List<employees>  dblist=  dbService.getEmployeesList();
+        List<employees>newlist= dblist.stream().filter(x->x.sex==boy).collect(Collectors.toList());
+        if(newlist.size()==0){
+            return  null;
+        }
+        else {
+            return  newlist;
+        }
+    }
 }

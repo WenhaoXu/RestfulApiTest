@@ -61,4 +61,14 @@ public  class employeesServiceTest {
         employees employees= employeesService.getEmployeesById(1);
         Assertions.assertThat(employees).isEqualTo(null);
     }
+
+    @Test
+    public void should_Return_EmployeesList_When_getEmployeesByMale(){
+        DBService dbService= Mockito.mock( DBService.class);
+        employeesService employeesService=new employeesService(dbService);
+        List<employees> list=new LinkedList<>();
+        Mockito.when(dbService.getEmployeesList()).thenReturn(list);
+        List<employees> list1= employeesService.getEmployeesByMale("boy");
+        Assertions.assertThat(list1).isEqualTo(null);
+    }
 }

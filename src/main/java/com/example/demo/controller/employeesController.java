@@ -27,7 +27,7 @@ public class employeesController {
 
      @GetMapping("/employees/male")
     public String getEmployeesByMale(){
-
+         List<employees> list =emplService.getEmployeesByMale("boy");
          return null;
     }
 
