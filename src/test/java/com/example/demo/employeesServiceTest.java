@@ -42,7 +42,6 @@ public  class employeesServiceTest {
         List<employees> list=new LinkedList<>();
         employees employees1=new employees();
         Mockito.when(dbService.getEmployeesList()).thenReturn(list);
-//        Mockito.when(dbService.getEmployeesList()).thenReturn(list);
        employees employees= employeesService.addEmployees(employees1);
         Assertions.assertThat(employees).isEqualTo(employees1);
     }
